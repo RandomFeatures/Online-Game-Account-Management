@@ -1,0 +1,34 @@
+<?php
+ /*
+Description:    {DESC}
+                
+****************History************************************
+Date:         	11.16.2009
+Author:       	Allen Halsted
+Mod:          	Creation
+***********************************************************
+*/    
+
+include ($_SERVER['DOCUMENT_ROOT'] . '/lib/configs/base.inc.php');
+include_once $_SERVER['DOCUMENT_ROOT'] . '/lib/system/charon/ws_manage_account.class.php';
+
+
+if (isset($_POST['gamelist']))
+{
+
+	$objManageAccount=new manage_account_webservice();
+
+	$gameID = (isset($_POST['gamelist'])) ? $_POST['gamelist'] : ''; 
+
+	//update user data
+	$success = $objManageAccount->JoinGame($gameID);
+	
+	if ($success)
+	{
+		print "Join Successful";
+	}else
+		print "Join Failed";
+	
+	
+}
+?>
